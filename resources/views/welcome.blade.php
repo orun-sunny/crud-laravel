@@ -25,6 +25,12 @@
         <h1>Hello World</h1>
         <a href="/create" class="bg-green-600 text-white-rounded p-4">Crud new Project</a>
     </div>
+
+    @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
 </div>
 </body>
 </html>
