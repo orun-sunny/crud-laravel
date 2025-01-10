@@ -37,5 +37,37 @@ class PostController extends Controller
 
 
     }
+
+    public function editData($id)
+    {
+        $post = Post::findOrFail($id);
+
+        return view('edit', ['ourPost' => $post]);
+    }
+
+    public function updateData(Request $request, $id)
+    {
+
+        $validated = $request->validate([
+            'name' => 'required',
+            'description' => 'required',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+        //upload image
+        if (isset($request->image)) {
+            $imageName = time() . '.' . $request->image->extension();
+            $request->image->move(public_path('images'), $imageName);
+            $post->image = $imageName;
+        }
+//update post
+        $post = Post::findOrFail($id);
+        $post->name = $request->name;
+        $post->description = $request->description;
+
+
+        $post->save();
+        return redirect()->route('home')->with('success', 'Post updated successfully');
+    }
     //
 }

@@ -13,6 +13,11 @@
                 @apply px-10 mx-auto;
             }
 
+            .btn {
+
+                @apply px-4 py-2 rounded-md text-white bg-green-600;
+            }
+
 
         }
 
@@ -71,10 +76,8 @@
                                             height="100px">
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
-                                        <button type="button"
-                                                class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-blue-600 hover:text-blue-800 focus:outline-none focus:text-blue-800 disabled:opacity-50 disabled:pointer-events-none">
-                                            Delete
-                                        </button>
+                                        <a href="{{route('edit',$post->id)}}"
+                                           class="btn">Edit</a>
                                     </td>
                                 </tr>
                             @endforeach
