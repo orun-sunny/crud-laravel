@@ -26,11 +26,17 @@
         <a href="/" class="bg-green-600 text-white-rounded p-4">Back to home</a>
     </div>
     <div>
-        <form action="{{route('store')}}" method="post">
+        <form action="{{route('store')}}" method="post" enctype="multipart/form-data">
             <div class="flex flex-col gap-4">
                 @csrf
-                <input type="text" name="name" placeholder="Name">
-                <input type="text" name="description" placeholder="description">
+                <input type="text" name="name" placeholder="Name" value="{{old('name')}}">
+                @error('name')
+                <p>{{$message}}</p>
+                @enderror
+                <input type="text" name="description" placeholder="description" value="{{old('description')}}">
+                @error('description')
+                <p>{{$message}}</p>
+                @enderror
                 <input type="file" name="image" id="">
                 <div>
                     <input type="submit" value="Submit" class="bg-green-600 text-white-rounded p-4">
