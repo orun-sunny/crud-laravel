@@ -78,6 +78,8 @@
                                     <td class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
                                         <a href="{{route('edit',$post->id)}}"
                                            class="btn">Edit</a>
+                                        <a href="{{route('delete',$post->id)}}"
+                                           class="btn">delete</a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -85,6 +87,8 @@
 
                             </tbody>
                         </table>
+
+                        {{$posts->links()}}
                     </div>
                 </div>
             </div>
